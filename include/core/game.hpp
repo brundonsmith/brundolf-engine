@@ -1,0 +1,36 @@
+#ifndef __game_hpp__
+#define __game_hpp__
+
+// external
+#include <string>
+#include <vector>
+
+// internal
+#include "scene.hpp"
+
+namespace brundolfEngine {
+  namespace core {
+
+    class Game {
+
+    public:
+      Game();
+      //Game(string manifestPath);
+      ~Game();
+      void load();
+      void start();
+
+    private:
+      void initialize();
+      void loadAssets();
+
+      std::string title;
+      std::vector<Scene> scenes;
+      int currentScene;
+
+    };
+
+  }
+}
+
+#endif
