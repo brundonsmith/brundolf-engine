@@ -24,9 +24,15 @@ namespace brundolfEngine {
       void initialize();
       void loadAssets();
 
+      void update();
+      void draw();
+
+
       std::string title;
       std::vector<Scene> scenes;
       int currentScene;
+
+      int frameRate;
 
     };
 

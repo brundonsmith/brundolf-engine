@@ -18,7 +18,8 @@ namespace brundolfEngine {
 
       // hooks
       void initialize();
-      void update(int timeSinceLastUpdate, int currentTime);
+      virtual void update(int timeSinceLastUpdate, int currentTime);
+      virtual void draw();
 
     private:
 
