@@ -26,7 +26,7 @@ namespace brundolfEngine {
       void initialize();
       void loadAssets();
 
-      void update();
+      void update(int deltaTime);
       void draw();
 
 

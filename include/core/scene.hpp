@@ -20,7 +20,7 @@ namespace brundolfEngine {
       void play();
       void pause();
 
-      void update();
+      void update(int deltaTime);
       void draw();
 
       bool getIsLoaded();

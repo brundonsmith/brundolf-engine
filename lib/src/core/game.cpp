@@ -7,20 +7,24 @@
 // internal
 #include "core/game.hpp"
 
-brundolfEngine::core::Game::Game() {
+using namespace brundolfEngine::core;
+
+Game::Game() {
   this->frameRate = 1;
 }
-brundolfEngine::core::Game::~Game() {
+Game::~Game() {
 }
 
-void brundolfEngine::core::Game::load() {
+void Game::load() {
   std::cout << "I loaded!\n";
 }
-void brundolfEngine::core::Game::start() {
+void Game::start() {
 
   while(true) {
     int millisecondsPerFrame = (int)(1000 * 1/((float)this->frameRate) );
-    float currentTime = duration_cast< milliseconds >(system_clock::now().time_since_epoch());
+    int currentTime =
+        std::chrono::duration_cast< std::chrono::milliseconds >(
+          std::chrono::system_clock::now().time_since_epoch()).count();
 
     update(currentTime - this->timeLastUpdated);
     draw();
@@ -30,13 +34,23 @@ void brundolfEngine::core::Game::start() {
   }
 
 }
-void brundolfEngine::core::Game::getCurrentScene() {
-  return &(this->scenes[this->currentSceneIndex]);
+Scene* Game::getCurrentScene() {
+  if(this->scenes.size() > 0) {
+    return &(this->scenes[this->currentSceneIndex]);
+  } else {
+    return NULL;
+  }
 }
 
-void brundolfEngine::core::Game::update() {
-  this->getCurrentScene()->update();
+void Game::update(int deltaTime) {
+  Scene* currentScene = this->getCurrentScene();
+  if(currentScene) {
+    currentScene->update(deltaTime);
+  }
 }
-void brundolfEngine::core::Game::draw() {
-  this->getCurrentScene()->draw();
+void Game::draw() {
+  Scene* currentScene = this->getCurrentScene();
+  if(currentScene) {
+    currentScene->draw();
+  }
 }

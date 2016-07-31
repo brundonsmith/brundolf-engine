@@ -22,7 +22,7 @@ namespace brundolfEngine {
 
     private:
       std::string name;
-      std::vector<Component> components;
+      std::vector<Component*> components;
 
     };
 
