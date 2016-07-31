@@ -17,8 +17,6 @@ namespace brundolfEngine {
       Scene();
       //Scene(string manifestPath);
       void load();
-      void play();
-      void pause();
 
       void update(int deltaTime);
       void draw();

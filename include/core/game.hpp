@@ -20,6 +20,8 @@ namespace brundolfEngine {
       void load();
       void start();
 
+      void addScene(Scene scene);
+      void goToScene(int sceneIndex);
       Scene* getCurrentScene();
 
     private:

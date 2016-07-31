@@ -3,6 +3,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <cmath>
 
 // internal
 #include "core/game.hpp"
@@ -34,8 +35,18 @@ void Game::start() {
   }
 
 }
+void Game::addScene(Scene scene) {
+  this->scenes.push_back(scene);
+}
+void Game::goToScene(int sceneIndex) {
+  this->currentSceneIndex = std::max(std::min(sceneIndex, (int)this->scenes.size()), 0);
+
+  if(this->getCurrentScene() && !this->getCurrentScene()->getIsLoaded()) {
+    this->getCurrentScene()->load();
+  }
+}
 Scene* Game::getCurrentScene() {
-  if(this->scenes.size() > 0) {
+  if(!this->scenes.empty()) {
     return &(this->scenes[this->currentSceneIndex]);
   } else {
     return NULL;
