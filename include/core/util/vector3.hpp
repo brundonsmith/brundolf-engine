@@ -18,7 +18,14 @@ namespace brundolfEngine {
         Vector3(float x, float y, float z);
         ~Vector3();
 
-        float distanceTo(Vector3 other);
+        float getLength();
+        float getDistanceTo(Vector3 other);
+        Vector3 getNormalized();
+
+        Vector3 operator+(Vector3 other);
+        Vector3 operator-(Vector3 other);
+        Vector3 operator*(float scale);
+        Vector3 operator/(float scale);
 
       private:
         float x;

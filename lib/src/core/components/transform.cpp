@@ -13,7 +13,7 @@ components::Transform::Transform() {
   // rotation
 }
 /*
-void components::Transform::update(int timeSinceLastUpdate, int currentTime) {
+void components::Transform::update(int deltaTime, int currentTime) {
 }
 void components::Transform::draw() {
 }

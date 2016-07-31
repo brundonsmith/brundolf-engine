@@ -3,6 +3,7 @@
 
 // external
 #include <string>
+#include <vector>
 
 // internal
 #include "entity.hpp"
@@ -19,6 +20,9 @@ namespace brundolfEngine {
       void play();
       void pause();
 
+      void update();
+      void draw();
+
       bool getIsLoaded();
 
     private:
@@ -29,6 +33,7 @@ namespace brundolfEngine {
       bool isLoaded;
       int time;
 
+      std::vector<Entity> entities;
 
     };
 

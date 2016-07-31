@@ -16,21 +16,27 @@ brundolfEngine::core::Game::~Game() {
 void brundolfEngine::core::Game::load() {
   std::cout << "I loaded!\n";
 }
-
 void brundolfEngine::core::Game::start() {
 
   while(true) {
-    update();
+    int millisecondsPerFrame = (int)(1000 * 1/((float)this->frameRate) );
+    float currentTime = duration_cast< milliseconds >(system_clock::now().time_since_epoch());
+
+    update(currentTime - this->timeLastUpdated);
     draw();
 
-    int millisecondsPerFrame = (int)(1000 * 1/((float)this->frameRate) );
+    this->timeLastUpdated = currentTime;
     std::this_thread::sleep_for(std::chrono::milliseconds(millisecondsPerFrame));
   }
+
+}
+void brundolfEngine::core::Game::getCurrentScene() {
+  return &(this->scenes[this->currentSceneIndex]);
 }
 
 void brundolfEngine::core::Game::update() {
-  std::cout << "I updated!\n";
+  this->getCurrentScene()->update();
 }
 void brundolfEngine::core::Game::draw() {
-  std::cout << "I drew!\n";
+  this->getCurrentScene()->draw();
 }

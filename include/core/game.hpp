@@ -20,6 +20,8 @@ namespace brundolfEngine {
       void load();
       void start();
 
+      Scene* getCurrentScene();
+
     private:
       void initialize();
       void loadAssets();
@@ -30,9 +32,10 @@ namespace brundolfEngine {
 
       std::string title;
       std::vector<Scene> scenes;
-      int currentScene;
+      int currentSceneIndex;
 
       int frameRate;
+      int timeLastUpdated;
 
     };
 

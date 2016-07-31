@@ -17,6 +17,9 @@ namespace brundolfEngine {
       Entity();
       ~Entity();
 
+      void update(int deltaTime, int currentTime);
+      void draw();
+
     private:
       std::string name;
       std::vector<Component> components;
