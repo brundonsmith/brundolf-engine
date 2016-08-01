@@ -13,6 +13,8 @@ namespace brundolfEngine {
     class Component {
 
     public:
+      Component();
+      virtual Component* clone();
       virtual ~Component();
 
       // hooks

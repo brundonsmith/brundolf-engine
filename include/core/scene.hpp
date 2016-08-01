@@ -18,6 +18,8 @@ namespace brundolfEngine {
       //Scene(string manifestPath);
       void load();
 
+      void addEntity(Entity entity);
+
       void update(int deltaTime);
       void draw();
 

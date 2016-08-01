@@ -15,6 +15,7 @@ namespace brundolfEngine {
       class SdlRenderer : public brundolfEngine::core::Component {
       public:
         SdlRenderer();
+        SdlRenderer* clone();
         ~SdlRenderer();
 
         // hooks

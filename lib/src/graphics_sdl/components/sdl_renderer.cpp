@@ -1,5 +1,6 @@
 
 // external
+#include <iostream>
 #include "sdl/SDL.h"
 
 // internal
@@ -7,11 +8,15 @@
 #include "graphics_sdl/components/sdl_renderer.hpp"
 #include "graphics_sdl/sdl_gfx_context.hpp"
 
+using namespace std;
 using namespace brundolfEngine::core;
 using namespace brundolfEngine::graphicsSdl;
 using namespace brundolfEngine::graphicsSdl::components;
 
 SdlRenderer::SdlRenderer() {
+}
+SdlRenderer* SdlRenderer::clone() {
+  return new SdlRenderer(*this);
 }
 SdlRenderer::~SdlRenderer() {
 }

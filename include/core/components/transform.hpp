@@ -15,6 +15,7 @@ namespace brundolfEngine {
       class Transform : public brundolfEngine::core::Component {
       public:
         Transform();
+        Transform* clone();
 
       private:
         brundolfEngine::core::util::Vector3 position;

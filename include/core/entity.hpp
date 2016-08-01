@@ -15,7 +15,11 @@ namespace brundolfEngine {
 
     public:
       Entity();
+      Entity(const Entity& src);
+      Entity& operator=(const Entity& src);
       ~Entity();
+
+      void addComponent(Component* component);
 
       void update(int deltaTime, int currentTime);
       void draw();

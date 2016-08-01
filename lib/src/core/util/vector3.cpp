@@ -17,6 +17,8 @@ Vector3::Vector3(float x, float y, float z) {
   this->y = y;
   this->z = z;
 }
+Vector3::~Vector3() {
+}
 
 float Vector3::getLength() {
   return this->getDistanceTo( Vector3(0,0,0) );

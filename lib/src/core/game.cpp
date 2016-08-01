@@ -28,6 +28,9 @@ Game::Game() {
   if(!Game::instance) {
     Game::instance = this;
   }
+
+  this->currentSceneIndex = 0;
+  this->timeLastUpdated = 0;
 }
 Game::Game(GameOptions options) {
   if(!Game::instance) {
@@ -47,6 +50,9 @@ void Game::start() {
 
   this->loadAssets();
 
+  this->timeLastUpdated = duration_cast< milliseconds >(system_clock::now().time_since_epoch()).count();
+
+  for(int i = 0; i < 5; i++) {
   //while(true) {
     int currentTime =
         duration_cast< milliseconds >(system_clock::now().time_since_epoch()).count();
@@ -60,7 +66,7 @@ void Game::start() {
       int millisecondsPerFrame = (int)(1000 * 1/((float)this->options.FPS) );
       this_thread::sleep_for(milliseconds(millisecondsPerFrame));
     }
-  //}
+  }
 
 }
 void Game::addScene(Scene scene) {

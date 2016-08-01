@@ -1,10 +1,11 @@
 
 // external
-
+#include <iostream>
 
 // internal
 #include "core/scene.hpp"
 
+using namespace std;
 using namespace brundolfEngine::core;
 
 Scene::Scene() {
@@ -12,6 +13,10 @@ Scene::Scene() {
 }
 void Scene::load() {
   this->isLoaded = true;
+}
+
+void Scene::addEntity(Entity entity) {
+  this->entities.push_back(entity);
 }
 
 void Scene::update(int deltaTime) {
