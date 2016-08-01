@@ -7,22 +7,46 @@
 
 // internal
 #include "scene.hpp"
+#include "gfx_context.hpp"
 
 namespace brundolfEngine {
   namespace core {
 
+    struct GameOptions {
+      int RESOLUTION_X;
+      int RESOLUTION_Y;
+      int FPS;
+      std::string TITLE;
+      std::string GFX_MODULE;
+
+      GameOptions() {
+        RESOLUTION_X = 640;
+        RESOLUTION_Y = 480;
+        FPS = 1;
+        TITLE = "My Game";
+        GFX_MODULE = "sdl";
+      }
+    };
+
     class Game {
+
+      // Singleton
+      public: static Game* getInstance();
+      private: static Game* instance;
+
 
     public:
       Game();
-      //Game(string manifestPath);
+      Game(GameOptions options);
       ~Game();
-      void load();
       void start();
 
       void addScene(Scene scene);
       void goToScene(int sceneIndex);
       Scene* getCurrentScene();
+
+      GameOptions getOptions();
+      GfxContext* getGfxContext();
 
     private:
       void initialize();
@@ -31,14 +55,12 @@ namespace brundolfEngine {
       void update(int deltaTime);
       void draw();
 
-
-      std::string title;
       std::vector<Scene> scenes;
       int currentSceneIndex;
-
-      int frameRate;
       int timeLastUpdated;
 
+      GameOptions options;
+      GfxContext* gfxContext;
     };
 
   }

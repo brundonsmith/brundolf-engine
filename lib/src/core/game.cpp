@@ -7,22 +7,44 @@
 
 // internal
 #include "core/game.hpp"
+#include "core/gfx_context.hpp"
+#include "graphics_sdl/sdl_gfx_context.hpp"
 
 using namespace brundolfEngine::core;
 
+
+// Singleton
+Game* Game::instance = NULL;
+Game* Game::getInstance() {
+  return Game::instance;
+}
+
+
+
 Game::Game() {
-  this->frameRate = 1;
+  if(!Game::instance) {
+    Game::instance = this;
+  }
+}
+Game::Game(GameOptions options) {
+  if(!Game::instance) {
+    Game::instance = this;
+  }
+
+  this->options = options;
 }
 Game::~Game() {
+  this->gfxContext->quit();
+  delete this->gfxContext;
 }
 
-void Game::load() {
-  std::cout << "I loaded!\n";
-}
 void Game::start() {
 
-  while(true) {
-    int millisecondsPerFrame = (int)(1000 * 1/((float)this->frameRate) );
+  this->initialize();
+
+  this->loadAssets();
+
+  //while(true) {
     int currentTime =
         std::chrono::duration_cast< std::chrono::milliseconds >(
           std::chrono::system_clock::now().time_since_epoch()).count();
@@ -31,8 +53,12 @@ void Game::start() {
     draw();
 
     this->timeLastUpdated = currentTime;
-    std::this_thread::sleep_for(std::chrono::milliseconds(millisecondsPerFrame));
-  }
+
+    if(this->options.FPS > 0) {
+      int millisecondsPerFrame = (int)(1000 * 1/((float)this->options.FPS) );
+      std::this_thread::sleep_for(std::chrono::milliseconds(millisecondsPerFrame));
+    }
+  //}
 
 }
 void Game::addScene(Scene scene) {
@@ -53,6 +79,23 @@ Scene* Game::getCurrentScene() {
   }
 }
 
+GameOptions Game::getOptions() {
+  return this->options;
+}
+GfxContext* Game::getGfxContext() {
+  return this->gfxContext;
+}
+
+void Game::initialize() {
+  if("sdl" == this->options.GFX_MODULE) {
+    this->gfxContext = new brundolfEngine::graphicsSdl::SdlGfxContext();
+  }
+
+  this->gfxContext->initialize();
+}
+void Game::loadAssets() {
+}
+
 void Game::update(int deltaTime) {
   Scene* currentScene = this->getCurrentScene();
   if(currentScene) {
@@ -64,4 +107,5 @@ void Game::draw() {
   if(currentScene) {
     currentScene->draw();
   }
+  this->getGfxContext()->refresh();
 }
