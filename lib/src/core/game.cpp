@@ -10,7 +10,10 @@
 #include "core/gfx_context.hpp"
 #include "graphics_sdl/sdl_gfx_context.hpp"
 
+using namespace std;
+using namespace std::chrono;
 using namespace brundolfEngine::core;
+using namespace brundolfEngine::graphicsSdl;
 
 
 // Singleton
@@ -46,8 +49,7 @@ void Game::start() {
 
   //while(true) {
     int currentTime =
-        std::chrono::duration_cast< std::chrono::milliseconds >(
-          std::chrono::system_clock::now().time_since_epoch()).count();
+        duration_cast< milliseconds >(system_clock::now().time_since_epoch()).count();
 
     update(currentTime - this->timeLastUpdated);
     draw();
@@ -56,7 +58,7 @@ void Game::start() {
 
     if(this->options.FPS > 0) {
       int millisecondsPerFrame = (int)(1000 * 1/((float)this->options.FPS) );
-      std::this_thread::sleep_for(std::chrono::milliseconds(millisecondsPerFrame));
+      this_thread::sleep_for(milliseconds(millisecondsPerFrame));
     }
   //}
 
@@ -65,7 +67,7 @@ void Game::addScene(Scene scene) {
   this->scenes.push_back(scene);
 }
 void Game::goToScene(int sceneIndex) {
-  this->currentSceneIndex = std::max(std::min(sceneIndex, (int)this->scenes.size()), 0);
+  this->currentSceneIndex = max(min(sceneIndex, (int)this->scenes.size()), 0);
 
   if(this->getCurrentScene() && !this->getCurrentScene()->getIsLoaded()) {
     this->getCurrentScene()->load();
@@ -88,7 +90,7 @@ GfxContext* Game::getGfxContext() {
 
 void Game::initialize() {
   if("sdl" == this->options.GFX_MODULE) {
-    this->gfxContext = new brundolfEngine::graphicsSdl::SdlGfxContext();
+    this->gfxContext = new SdlGfxContext();
   }
 
   this->gfxContext->initialize();

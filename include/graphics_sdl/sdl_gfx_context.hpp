@@ -7,12 +7,10 @@
 // internal
 #include "core/gfx_context.hpp"
 
-using namespace brundolfEngine;
-
 namespace brundolfEngine {
   namespace graphicsSdl {
 
-    class SdlGfxContext : public core::GfxContext {
+    class SdlGfxContext : public brundolfEngine::core::GfxContext {
     public:
       SdlGfxContext();
       ~SdlGfxContext();

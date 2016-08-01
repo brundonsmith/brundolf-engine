@@ -7,6 +7,8 @@
 #include "core/game.hpp"
 #include "graphics_sdl/sdl_gfx_context.hpp"
 
+using namespace std;
+using namespace brundolfEngine::core;
 using namespace brundolfEngine::graphicsSdl;
 
 SdlGfxContext::SdlGfxContext() {
@@ -15,10 +17,10 @@ SdlGfxContext::~SdlGfxContext() {
 }
 
 void SdlGfxContext::initialize() {
-  core::GameOptions gameOptions = brundolfEngine::core::Game::getInstance()->getOptions();
+  GameOptions gameOptions = Game::getInstance()->getOptions();
 
   if( SDL_Init( SDL_INIT_VIDEO ) < 0 ) {
-    std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << "\n";
+    cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << "\n";
   } else {
     //Create window
     this->window = SDL_CreateWindow(
@@ -31,7 +33,7 @@ void SdlGfxContext::initialize() {
       );
 
     if( this->window == NULL ) {
-      std::cout << "Window could not be created! SDL_Error: " << SDL_GetError() << "\n";
+      cout << "Window could not be created! SDL_Error: " << SDL_GetError() << "\n";
     } else {
       screenSurface = SDL_GetWindowSurface( window );
     }

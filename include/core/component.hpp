@@ -13,12 +13,12 @@ namespace brundolfEngine {
     class Component {
 
     public:
-      virtual ~Component() { };
+      virtual ~Component();
 
       // hooks
-      virtual void initialize() = 0;
-      virtual void update(int deltaTime, int currentTime) = 0;
-      virtual void draw() = 0;
+      virtual void initialize();
+      virtual void update(int deltaTime, int currentTime);
+      virtual void draw();
 
     private:
 

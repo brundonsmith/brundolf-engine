@@ -8,13 +8,11 @@
 #include "core/util/vector3.hpp"
 #include "core/component.hpp"
 
-using namespace brundolfEngine;
-
 namespace brundolfEngine {
   namespace graphicsSdl {
     namespace components {
 
-      class SdlRenderer : public core::Component {
+      class SdlRenderer : public brundolfEngine::core::Component {
       public:
         SdlRenderer();
         ~SdlRenderer();
