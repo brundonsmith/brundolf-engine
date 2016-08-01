@@ -34,7 +34,7 @@ void SdlRenderer::draw() {
   GfxContext* gfxContext = Game::getInstance()->getGfxContext();
   Transform* transform = this->entity->getComponent<Transform>();
   Vector3 position = transform->position;
-  Vector3 size = transform->scale;
+  Vector3 size = Vector3(100,100,100) * transform->scale;
 
   SDL_Rect drawRect = { (int)round(position.x), (int)round(position.y), (int)round(size.x), (int)round(size.y) };
 
@@ -43,7 +43,7 @@ void SdlRenderer::draw() {
     SDL_FillRect(
       sdlGfxContext->getScreenSurface(),
       &drawRect,
-      SDL_MapRGB( sdlGfxContext->getScreenSurface()->format, 0xFF, 0xFF, 0xFF )
+      SDL_MapRGB( sdlGfxContext->getScreenSurface()->format, 0xFF, 0x00, 0x00 )
     );
   }
 }
