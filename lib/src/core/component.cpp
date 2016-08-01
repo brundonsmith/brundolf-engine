@@ -16,6 +16,10 @@ Component* Component::clone() {
 Component::~Component() {
 }
 
+void Component::setEntity(Entity* entity) {
+  this->entity = entity;
+}
+
 void Component::initialize() {
 }
 void Component::update(int deltaTime, int currentTime) {

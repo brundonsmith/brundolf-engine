@@ -1,6 +1,7 @@
 
 // external
 #include <iostream>
+#include <map>
 
 // internal
 #include "core/entity.hpp"
@@ -15,29 +16,34 @@ Entity::Entity(const Entity& src) {
 }
 Entity& Entity::operator=(const Entity& src) {
   this->name = src.name;
-  for(int i = 0; i < src.components.size(); i++) {
-    this->components.push_back(src.components[i]->clone());
+  for (map<const char*, Component*>::const_iterator it = src.components.begin(); it != src.components.end(); it++) {
+    this->components[it->first] = it->second->clone();
   }
 
   return *this;
 }
 Entity::~Entity() {
-  for(int i = 0; i < this->components.size(); i++) {
-    delete this->components[i];
+  for (map<const char*, Component*>::iterator it = this->components.begin(); it != this->components.end(); it++) {
+    delete it->second;
   }
 }
 
 void Entity::addComponent(Component* component) {
-  this->components.push_back(component->clone());
+  if(this->components.find(typeid(*component).name()) != this->components.end()) {
+    this->components[typeid(*component).name()]->setEntity(NULL);
+  }
+
+  component->setEntity(this);
+  this->components[typeid(*component).name()] = component->clone();
 }
 
 void Entity::update(int deltaTime, int currentTime) {
-  for(int i = 0; i < this->components.size(); i++) {
-    this->components[i]->update(deltaTime, currentTime);
+  for (map<const char*, Component*>::iterator it = this->components.begin(); it != this->components.end(); it++) {
+    it->second->update(deltaTime, currentTime);
   }
 }
 void Entity::draw() {
-  for(int i = 0; i < this->components.size(); i++) {
-    this->components[i]->draw();
+  for (map<const char*, Component*>::iterator it = this->components.begin(); it != this->components.end(); it++) {
+    it->second->draw();
   }
 }

@@ -67,6 +67,28 @@ Vector3 Vector3::operator-(Vector3 other) {
 
   return Vector3(newX, newY, newZ);
 }
+Vector3 Vector3::operator*(Vector3 other) {
+  float newX = this->x;
+  float newY = this->y;
+  float newZ = this->z;
+
+  newX *= other.x;
+  newY *= other.y;
+  newZ *= other.z;
+
+  return Vector3(newX, newY, newZ);
+}
+Vector3 Vector3::operator/(Vector3 other) {
+  float newX = this->x;
+  float newY = this->y;
+  float newZ = this->z;
+
+  newX /= other.x;
+  newY /= other.y;
+  newZ /= other.z;
+
+  return Vector3(newX, newY, newZ);
+}
 Vector3 Vector3::operator*(float scale) {
   float newX = this->x;
   float newY = this->y;

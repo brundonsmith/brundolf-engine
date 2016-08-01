@@ -17,7 +17,6 @@ namespace brundolfEngine {
         Transform();
         Transform* clone();
 
-      private:
         brundolfEngine::core::util::Vector3 position;
         brundolfEngine::core::util::Vector3 scale;
         // quaternion

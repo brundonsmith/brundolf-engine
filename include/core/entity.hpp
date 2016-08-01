@@ -2,8 +2,9 @@
 #define __entity_hpp__
 
 // external
+#include <iostream>
 #include <string>
-#include <vector>
+#include <map>
 
 // internal
 #include "component.hpp"
@@ -21,12 +22,21 @@ namespace brundolfEngine {
 
       void addComponent(Component* component);
 
+      template<class C>
+      C* getComponent() {
+        if(this->components.find(typeid(C).name()) != this->components.end()) {
+          return (C*)(this->components[typeid(C).name()]);
+        } else {
+          return NULL;
+        }
+      }
+
       void update(int deltaTime, int currentTime);
       void draw();
 
-    private:
+    //private:
       std::string name;
-      std::vector<Component*> components;
+      std::map<const char*, Component*> components;
 
     };
 

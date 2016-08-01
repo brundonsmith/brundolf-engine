@@ -24,14 +24,14 @@ namespace brundolfEngine {
 
         Vector3 operator+(Vector3 other);
         Vector3 operator-(Vector3 other);
+        Vector3 operator*(Vector3 other);
+        Vector3 operator/(Vector3 other);
         Vector3 operator*(float scale);
         Vector3 operator/(float scale);
 
-      private:
         float x;
         float y;
         float z;
-
       };
 
     }

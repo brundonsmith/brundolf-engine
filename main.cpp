@@ -23,6 +23,7 @@ int main(int argc, char* args[]) {
 
   bob.addComponent(&component1);
   bob.addComponent(&component2);
+  bob.name = "Bob";
 
   scene1.addEntity(bob);
 

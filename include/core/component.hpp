@@ -10,6 +10,8 @@
 namespace brundolfEngine {
   namespace core {
 
+    class Entity;
+
     class Component {
 
     public:
@@ -17,13 +19,15 @@ namespace brundolfEngine {
       virtual Component* clone();
       virtual ~Component();
 
+      void setEntity(Entity* entity);
+
       // hooks
       virtual void initialize();
       virtual void update(int deltaTime, int currentTime);
       virtual void draw();
 
-    private:
-
+    protected:
+      Entity* entity;
 
     };
 
