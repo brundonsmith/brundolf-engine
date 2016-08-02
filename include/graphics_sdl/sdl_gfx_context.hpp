@@ -28,6 +28,8 @@ namespace brundolfEngine {
       SDL_Window* window;
       SDL_Surface* screenSurface;
 
+      Uint32 clearColor;
+
     };
 
   }

@@ -19,10 +19,11 @@ SdlGfxContext::~SdlGfxContext() {
 void SdlGfxContext::initialize() {
   GameOptions gameOptions = Game::getInstance()->getOptions();
 
+  // Initialize SDL
   if( SDL_Init( SDL_INIT_VIDEO ) < 0 ) {
     cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << "\n";
   } else {
-    //Create window
+    // Create window
     this->window = SDL_CreateWindow(
         gameOptions.TITLE.c_str(),
         SDL_WINDOWPOS_UNDEFINED,
@@ -35,12 +36,30 @@ void SdlGfxContext::initialize() {
     if( this->window == NULL ) {
       cout << "Window could not be created! SDL_Error: " << SDL_GetError() << "\n";
     } else {
+      // Get surface
       screenSurface = SDL_GetWindowSurface( window );
     }
   }
+
+  this->clearColor =
+    SDL_MapRGB(
+        this->getScreenSurface()->format,
+        gameOptions.CLEAR_COLOR.red,
+        gameOptions.CLEAR_COLOR.green,
+        gameOptions.CLEAR_COLOR.blue
+      );
 }
 void SdlGfxContext::refresh() {
+
+  // Refresh buffer
   SDL_UpdateWindowSurface( this->window );
+
+  // Clear screen for next draw
+  SDL_FillRect(
+    this->getScreenSurface(),
+    NULL,
+    this->clearColor
+  );
 }
 void SdlGfxContext::quit() {
   //Destroy window

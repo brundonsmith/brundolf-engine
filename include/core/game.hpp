@@ -6,6 +6,7 @@
 #include <vector>
 
 // internal
+#include "util/color.hpp"
 #include "scene.hpp"
 #include "gfx_context.hpp"
 
@@ -18,6 +19,7 @@ namespace brundolfEngine {
       int FPS;
       std::string TITLE;
       std::string GFX_MODULE;
+      brundolfEngine::core::util::Color CLEAR_COLOR;
 
       GameOptions() {
         RESOLUTION_X = 640;
@@ -25,6 +27,7 @@ namespace brundolfEngine {
         FPS = 60;
         TITLE = "My Game";
         GFX_MODULE = "sdl";
+        CLEAR_COLOR = brundolfEngine::core::util::Color();
       }
     };
 
