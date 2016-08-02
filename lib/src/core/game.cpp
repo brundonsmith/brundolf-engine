@@ -52,13 +52,13 @@ void Game::start() {
 
   this->timeLastUpdated = duration_cast< milliseconds >(system_clock::now().time_since_epoch()).count();
 
-  for(int i = 0; i < 5; i++) {
-  //while(true) {
+  //for(int i = 0; i < 5; i++) {
+  while(true) {
     int currentTime =
         duration_cast< milliseconds >(system_clock::now().time_since_epoch()).count();
 
-    update(currentTime - this->timeLastUpdated);
     draw();
+    update(currentTime - this->timeLastUpdated);
 
     this->timeLastUpdated = currentTime;
 

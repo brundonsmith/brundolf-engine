@@ -22,7 +22,7 @@ namespace brundolfEngine {
       GameOptions() {
         RESOLUTION_X = 640;
         RESOLUTION_Y = 480;
-        FPS = 1;
+        FPS = 60;
         TITLE = "My Game";
         GFX_MODULE = "sdl";
       }

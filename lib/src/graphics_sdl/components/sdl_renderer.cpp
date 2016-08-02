@@ -29,6 +29,8 @@ void SdlRenderer::initialize() {
 
 }
 void SdlRenderer::update(int deltaTime, int currentTime) {
+  Transform* transform = this->entity->getComponent<Transform>();
+  transform->position += Vector3(0, 10, 0) * ((float)deltaTime / 1000.0f);
 }
 void SdlRenderer::draw() {
   GfxContext* gfxContext = Game::getInstance()->getGfxContext();
