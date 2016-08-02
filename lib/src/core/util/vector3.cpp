@@ -56,6 +56,9 @@ Vector3 Vector3::operator+(Vector3 other) {
 
   return Vector3(newX, newY, newZ);
 }
+Vector3 Vector3::operator+=(Vector3 other) {
+  return *this = *this + other;
+}
 Vector3 Vector3::operator-(Vector3 other) {
   float newX = this->x;
   float newY = this->y;
@@ -66,6 +69,9 @@ Vector3 Vector3::operator-(Vector3 other) {
   newZ -= other.z;
 
   return Vector3(newX, newY, newZ);
+}
+Vector3 Vector3::operator-=(Vector3 other) {
+  return *this = *this - other;
 }
 Vector3 Vector3::operator*(Vector3 other) {
   float newX = this->x;
@@ -78,6 +84,9 @@ Vector3 Vector3::operator*(Vector3 other) {
 
   return Vector3(newX, newY, newZ);
 }
+Vector3 Vector3::operator*=(Vector3 other) {
+  return *this = *this * other;
+}
 Vector3 Vector3::operator/(Vector3 other) {
   float newX = this->x;
   float newY = this->y;
@@ -88,6 +97,9 @@ Vector3 Vector3::operator/(Vector3 other) {
   newZ /= other.z;
 
   return Vector3(newX, newY, newZ);
+}
+Vector3 Vector3::operator/=(Vector3 other) {
+  return *this = *this / other;
 }
 Vector3 Vector3::operator*(float scale) {
   float newX = this->x;
@@ -100,6 +112,9 @@ Vector3 Vector3::operator*(float scale) {
 
   return Vector3(newX, newY, newZ);
 }
+Vector3 Vector3::operator*=(float scale) {
+  return *this = *this * scale;
+}
 Vector3 Vector3::operator/(float scale) {
   float newX = this->x;
   float newY = this->y;
@@ -110,4 +125,7 @@ Vector3 Vector3::operator/(float scale) {
   newZ /= scale;
 
   return Vector3(newX, newY, newZ);
+}
+Vector3 Vector3::operator/=(float scale) {
+  return *this = *this / scale;
 }

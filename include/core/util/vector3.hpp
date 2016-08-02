@@ -23,11 +23,17 @@ namespace brundolfEngine {
         Vector3 getNormalized();
 
         Vector3 operator+(Vector3 other);
+        Vector3 operator+=(Vector3 other);
         Vector3 operator-(Vector3 other);
+        Vector3 operator-=(Vector3 other);
         Vector3 operator*(Vector3 other);
+        Vector3 operator*=(Vector3 other);
         Vector3 operator/(Vector3 other);
+        Vector3 operator/=(Vector3 other);
         Vector3 operator*(float scale);
+        Vector3 operator*=(float scale);
         Vector3 operator/(float scale);
+        Vector3 operator/=(float scale);
 
         float x;
         float y;
