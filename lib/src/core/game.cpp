@@ -52,7 +52,7 @@ void Game::start() {
 
   this->timeLastUpdated = duration_cast< milliseconds >(system_clock::now().time_since_epoch()).count();
 
-  // run for a limited amount of time
+  // FOR TESTING: run for a limited amount of time
   int lifetimeInSeconds = 4;
   for(int creationTime = this->timeLastUpdated; this->timeLastUpdated - creationTime < lifetimeInSeconds * 1000;) {
   //while(true) {

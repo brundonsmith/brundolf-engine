@@ -44,7 +44,7 @@ if g++ main.cpp \
     -I ./dependencies/include \
     -o game.exe; \
 then
-  ./game.exe
+  echo "--- BUILD SUCCEEDED ---"
 else
   echo "--- BUILD FAILED ---"
 fi

@@ -21,6 +21,9 @@ namespace brundolfEngine {
 
       void setEntity(Entity* entity);
 
+      template<class C>
+      C* getComponent();
+
       // hooks
       virtual void initialize();
       virtual void update(int deltaTime, int currentTime);
