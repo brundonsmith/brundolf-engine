@@ -2,6 +2,10 @@
 
 ### OBJECT FILE BUILDS
 
+mkdir -p lib/obj/core/components
+mkdir -p lib/obj/core/util
+mkdir -p lib/obj/graphics_sdl/components
+
 # core
 g++ -c lib/src/core/components/transform.cpp -I./include -I ./dependencies/include -o lib/obj/core/components/transform.o
 g++ -c lib/src/core/util/vector3.cpp -I./include -I ./dependencies/include -o lib/obj/core/util/vector3.o

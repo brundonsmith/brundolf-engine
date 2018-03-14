@@ -6,7 +6,7 @@
 
 // internal
 #include "core/components/transform.hpp"
-#include "core/Game.hpp"
+#include "core/game.hpp"
 #include "graphics_sdl/components/sdl_renderer.hpp"
 #include "graphics_sdl/sdl_gfx_context.hpp"
 
